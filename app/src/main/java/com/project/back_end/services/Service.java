@@ -1,6 +1,25 @@
 package com.project.back_end.services;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@org.springframework.stereotype.Service
 public class Service {
+
+    // TEMPORARY: lets DashboardController compile and run before the Service lab.
+    // Only checks that a token is present; replace with real TokenService validation in the Service lab.
+    public ResponseEntity<Map<String, String>> validateToken(String token, String user) {
+        Map<String, String> errors = new HashMap<>();
+        if (token == null || token.isBlank()) {
+            errors.put("error", "Invalid or expired token");
+            return new ResponseEntity<>(errors, HttpStatus.UNAUTHORIZED);
+        }
+        return new ResponseEntity<>(errors, HttpStatus.OK);
+    }
+
 // 1. **@Service Annotation**
 // The @Service annotation marks this class as a service component in Spring. This allows Spring to automatically detect it through component scanning
 // and manage its lifecycle, enabling it to be injected into controllers or other services using @Autowired or constructor injection.
