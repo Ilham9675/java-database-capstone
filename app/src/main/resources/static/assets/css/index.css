@@ -57,6 +57,11 @@ button:hover {
   background-color: #A62B1F;
 }
 
+/* style.css makes .dashboard-btn full width for modals; keep the role buttons compact */
+.main-content .dashboard-btn {
+  width: 200px;
+}
+
 .dashboard-btn {
   background-color: #015c5d;
 }
