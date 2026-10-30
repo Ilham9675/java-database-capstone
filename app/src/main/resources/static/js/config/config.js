@@ -11,4 +11,6 @@
  *   fetch(`${API_BASE_URL}/api/appointments`)
  */
 
-export const API_BASE_URL = "http://localhost:8080";
+// Empty string = same origin as the page. The frontend is served by the same Spring Boot app,
+// so this works on localhost and on the Cloud IDE proxy URL without editing it each session.
+export const API_BASE_URL = "";

@@ -3,6 +3,7 @@ package com.project.back_end.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -41,8 +42,9 @@ public class Doctor {
     @Pattern(regexp = "\\d{10}", message = "Phone number must be 10 digits")
     private String phone;
 
-    // Stored in a separate table (doctor_available_times), e.g. "09:00-10:00"
-    @ElementCollection
+    // Stored in a separate table (doctor_available_times), e.g. "09:00-10:00".
+    // Loaded eagerly so the list can be serialized to JSON after the session closes.
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> availableTimes;
 
     public Doctor() {
